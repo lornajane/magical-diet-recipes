@@ -1,0 +1,11 @@
+{%- extends "bootstrap/base.html" %}
+
+{% block title %}Magical Flask Demo{% endblock %}
+
+{% block styles -%}
+    {{super()}}  {# do not forget to call super or Bootstrap's own stylesheets
+                    will disappear! #}
+    <link rel="stylesheet" type="text/css"
+          href="{{url_for('static', filename='sample-app.css')}}">
+{% endblock %}
+
