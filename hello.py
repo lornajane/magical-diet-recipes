@@ -1,12 +1,15 @@
-import logging
 import os
 import psycopg2
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 Bootstrap(app)
+
+# pg_uri = os.environ.get('PG_URI')
+# db_conn = psycopg2.connect(pg_uri)
+
 
 @app.route('/')
 def hello_world():
@@ -22,6 +25,7 @@ def hello_world():
         print("Successfully connected to: {}".format(result[0]) + '\n')
 
     return 'Hello, World!'
+
 
 @app.route('/temp')
 def templated():
@@ -40,3 +44,14 @@ def templated():
     tagline.append("Bringing options for dreamers, poets and dancers")
 
     return render_template('index.html', tagline=tagline)
+
+
+@app.route('/rating', methods=['POST'])
+def posted():
+    print("Data received")
+    data = request.form
+    print(data)
+
+    # put this into the table
+
+    return "OK"
