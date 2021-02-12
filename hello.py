@@ -14,6 +14,7 @@ Bootstrap(app)
 @app.route('/')
 def hello_world():
     pg_uri = os.environ.get('PG_URI')
+    print(os.environ)
     if pg_uri:
         print(pg_uri + '\n')
 
